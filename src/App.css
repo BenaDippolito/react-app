@@ -1,0 +1,314 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap");
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-family: Roboto, sans-serif;
+}
+
+.app {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+.nav__container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+.logo {
+  width: 100px;
+  padding: 8px;
+}
+.nav__links {
+  display: flex;
+  gap: 16px;
+}
+
+.nav__links li {
+  list-style: none;
+}
+
+.nav__link {
+  margin-left: 8px;
+  text-decoration: none;
+  font-size: 16px;
+  color: #111;
+  font-weight: 600;
+  padding: 6px 8px;
+  border-radius: 4px;
+}
+
+.nav__link:hover {
+  text-decoration: underline;
+}
+
+.nav__link--primary {
+  border: 2px solid #111;
+}
+
+.nav__link--primary:hover {
+  text-decoration: none;
+}
+
+/* Active state for nav links */
+.nav__link--active {
+  background-color: #111;
+  color: #fff !important;
+}
+
+/* When a primary link is active, make it filled and remove border */
+.nav__link--primary.nav__link--active {
+  border-color: transparent;
+  background-color: #111;
+}
+
+/* Mobile menu button and backdrop */
+.btn__menu {
+  background: transparent;
+  border: none;
+  font-size: 28px;
+  cursor: pointer;
+  color: #111;
+  display: none; /* shown in small screens */
+}
+
+.menu__backdrop {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(36, 36, 36, 0.95);
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(5%);
+  transition: opacity 200ms ease, transform 200ms ease, visibility 200ms;
+}
+.menu__backdrop--open {
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.btn__menu--close {
+  position: absolute;
+  top: 16px;
+  right: 20px;
+  font-size: 28px;
+  color: #fff;
+  background: transparent;
+  border: none;
+}
+
+.menu__links {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  align-items: center;
+}
+
+.menu__link {
+  color: #fff;
+  font-size: 32px;
+  text-decoration: none;
+}
+
+/* Hide inline nav links and show hamburger on small screens */
+@media (max-width: 768px) {
+  .nav__links {
+    display: none;
+  }
+  .btn__menu {
+    display: none;
+  }
+}
+
+.header__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 24px;
+}
+.input__wrapper {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  width: 100%;
+  max-width: 720px;
+}
+.search__input {
+  flex: 1;
+  padding: 12px 16px;
+  border: 1px solid #dcdfe6;
+  outline: none;
+}
+.btn {
+  background-color: #c2ab29;
+  color: black;
+  padding: 12px 20px;
+  border-radius: 4px;
+  border: none;
+}
+
+/* Compact search button inside the input wrapper */
+.input__wrapper {
+  position: relative;
+}
+.search__input {
+  padding-right: 56px; /* space for the button */
+  border-radius: 8px;
+}
+.search__button {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  border: none;
+  background-color: #ffffff;
+  color: #000;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border-radius: 6px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+}
+.search__button:focus {
+  outline: 2px solid #7342d6;
+  outline-offset: 2px;
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* Movies grid layout - default 3 across */
+.movies {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+  margin-top: 16px;
+  margin-bottom: 40px;
+}
+.movie {
+  background: #fff;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+.movie img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  aspect-ratio: 2/3;
+}
+.movie h2,
+.movie h4,
+.movie button {
+  padding: 0 12px;
+}
+.movie h2 {
+  font-size: 18px;
+  margin-top: 12px;
+}
+.movie h4 {
+  font-size: 14px;
+  color: #606266;
+  margin-top: 4px;
+  margin-bottom: 12px;
+}
+.movie button {
+  margin: 12px;
+  align-self: flex-start;
+}
+
+.movies__loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 60px;
+  font-size: 60px;
+  color: #7342d6;
+}
+
+/* Home hero animated gradient background */
+.home-hero {
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+  margin-bottom: 24px;
+}
+
+.animated-gradient {
+  position: absolute;
+  inset: 0; /* fill the hero area */
+  background: linear-gradient(120deg, #0f172a 0%, #0ea5a9 40%, #7c3aed 100%);
+  background-size: 300% 300%;
+  animation: gradientShift 12s ease infinite;
+  z-index: 0;
+  pointer-events: none; /* decorative only */
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Floating effect for poster cards or images */
+.floating {
+  will-change: transform;
+  animation: floatY 6s ease-in-out infinite;
+}
+@keyframes floatY {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px) rotate(-0.2deg);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+/* Respect users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .animated-gradient {
+    animation: none;
+  }
+  .floating {
+    animation: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .movies {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 550px) {
+  .movies {
+    grid-template-columns: 1fr;
+  }
+}
